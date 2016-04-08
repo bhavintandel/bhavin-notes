@@ -101,10 +101,11 @@ processing of large dataset on comodity hardware.
 
 * _hdfs namenode_ :  namenode startup saves new checkpoint
 * _hdfs dfsadmin -safemode enter_ 
-commands | description
+
+Commands | Description
 -------- | -----------
 _hdfs namenode_ | namenode startup saves new checkpoint
-_hdfs dfsadmin -safemode enter_ | 
+_hdfs dfsadmin -safemode enter_ | Enter safemode
 _hdfs dfsadmin -saveNamespace_ | Saves new checkpoint while NameNode process keeps running
 _hdfs dfsadmin -rollEdits_ | manually rolls edits
-_hdfs dfsadmin -fetchimage_ download latest fsimage from NN, useful for backup
+_hdfs dfsadmin -fetchimage_ | download latest fsimage from NN, useful for backup
