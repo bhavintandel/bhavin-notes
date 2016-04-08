@@ -3,7 +3,7 @@
 * HDFS
   1. HortonWorks scale upto 200 PB and nearly 4500 servers per one cluster.
   2. NameNode doesn't request DataNode, it replies to _heartbeats_.
-  3. **OZONE* new initiatives lets you store objects like fb image on HDFS.
+  3. *OZONE* new initiatives lets you store objects like fb image on HDFS.
 
 
 
@@ -38,4 +38,16 @@ processing of large dataset on comodity hardware.
     * Sqoop easy movement of data in or out of hadoop. 
 
   ####4. Security
-    *
+    * Knox provides single point of authentication and access to hadoop services.
+    * Ranger delivers comprehensive approach to security for hadoop cluster.
+
+  ####5. Operations
+    * Ambari is open source installation lifecycle management, administration and monitoring system.
+    * Oozie used to schedule hadoop jobs.
+    * ZooKeeper coordinating distributed processes.
+
+* Characteristic of hadoop
+  1. Volume
+  2. Velocity
+  3. Variety
+  4. Variability (different semantics)
