@@ -99,9 +99,6 @@ processing of large dataset on comodity hardware.
 
 ### HDFS commands
 
-* _hdfs namenode_ :  namenode startup saves new checkpoint
-* _hdfs dfsadmin -safemode enter_ 
-
 Commands | Description
 -------- | -----------
 _hdfs namenode_ | namenode startup saves new checkpoint
