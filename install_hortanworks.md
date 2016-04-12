@@ -12,13 +12,14 @@
   * _cat /etc/issue_   or _cat /etc/redhat-release_
 
 5. Check common Prerequisites
+  * Install _wget_, _unzip_, _curl_, _tar_;
   * Firewall
     * Save present firewall configuration by `sudo iptables-save > /etc/sysconfig/iptables`
     * Stop firewall: `sudo service iptables stop` & `sudo chkconfig iptables off`
     * Check if firewall disable `sudo service iptables status`
+    * Disable ipv6 tables: `service ip6tables stop` & `chkconfig ip6tables off` for permanently stop. 
     * Disable SELinux `sudo /usr/sbin/setenforce 0`
       `sudo sed -i.old s/SELINUX=enforcing/SELINUX=disabled/ /etc/selinux/config`
-    * To check status `setstatus`
     * Set hostname `sudo hostname [ ... ]`
     * Validate username: `uname -a`
     * Check config: `/sbin/ifconfig`
@@ -29,7 +30,7 @@
 6. Check if we can mount device
   * `lsblk`
 
-7. Check if transparent huge pages
+7. Check if transparent huge pages (to disable go to point 10)
   * `cat /proc/sys/vm/nr_hugepages` output should be __0__
 
 8. Install Java
@@ -48,6 +49,18 @@
   *  To check status of mysql: `service mysqld status`
   * `service mysqld start` to start the mysqld
 
+10. To tune hadoop:
+  * It is important to tune few parameter of memory to optimize hadoop. [Here](http://mapredit.blogspot.co.uk/2014/11/hadoop-server-performance-tuning.html) is the wonerful link.
+    * To disable swappiness:
+    ` sysctl -w vm.swappiness=0`
+    `echo “vm.swappiness = 0” >> /etc/sysctl.conf `
+  * Disable Huge Tansparent Pages:
+    `echo never > /sys/kernel/mm/transparent_hugepage/enabled`
+    `if test -f /sys/kernel/mm/redhat_transparent_hugepage/enabled; then
+echo never > /sys/kernel/mm/redhat_transparent_hugepage/enabled
+fi`
+
+
 ###Installation
 
 1. Mysql-connector
@@ -59,12 +72,13 @@
 
 3. Start mysql
   * `mysql -u root -p`, press enter and no password
+  * `mysql_secure_installtion` and delete anonymous user
 
 4. Create database
   1. Hive
 ```mysql
-CREATE USER 'hive'@'master.cloudwick.com' IDENTIFIED BY 'hive';
-GRANT ALL PRIVILEGES ON *.* TO 'hive'@'master.cloudwick.com' with grant option;
+CREATE USER 'hive'@'master' IDENTIFIED BY 'hive';
+GRANT ALL PRIVILEGES ON *.* TO 'hive'@'localhost' with grant option;
 CREATE USER 'hive'@'%' IDENTIFIED BY 'hive';
 GRANT ALL PRIVILEGES ON *.* TO 'hive'@'%' with grant option;
 CREATE USER 'hive'@'<FQDN of the HiveMetaStoreHost>' IDENTIFIED BY
@@ -101,7 +115,8 @@ GRANT ALL PRIVILEGES ON *.* TO 'oozie'@'<* FQDN of the OozieServerHost
   * `yum install ambari-server`
   * `yum install ambari-agent`
   * `ambari-server setup`, select custom jdk and select java path ; this also install new JDK, you can use previously installed JDK by
-	'ambari-server setup -j /usr/java/latest/`
+	'ambari-server setup -j /usr/java/latest/`, [Here] (https://developer.ibm.com/hadoop/blog/2015/10/30/configure-ambari-hadoop-cluster-use-single-mysql-database-instance/) is good link.
+
 
 6. Select Mysql as database
   * `mysql -u ambari -p`, Press enter with no password
@@ -133,4 +148,10 @@ we add hosts in: /etc/hosts
 
 Normal copy: `CP oldfile newfile`
 
-To Secure copy-  `SCP user@host:oldfile user@host:newfile`
+To [Secure copy](http://www.hypexr.org/linux_scp_help.php)-  `SCP user@host:oldfile user@host:newfile`
+OR
+`scp /etc/hosts root@172.16.0.107:/etc/`
+
+* To get version information
+  `yum info ambari-server`
+  `yum info ambari-agent`
