@@ -155,3 +155,9 @@ OR
 * To get version information
   `yum info ambari-server`
   `yum info ambari-agent`
+
+* MySQL issue:
+  1. We should make sure to remove anonymous users.
+
+* On all datanode
+  1. `/etc/ambari-agent/conf/ambari-agent.ini` and change HostName to ambari-server hostname.
