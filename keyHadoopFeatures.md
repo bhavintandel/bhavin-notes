@@ -97,6 +97,10 @@ processing of large dataset on comodity hardware.
   5. dncp_block_verification.log: last verification time
   6. in_use.lock: held by DataNode process, used to prevent multiple DataNode from starting up & modifiying directory
 
+* It sends heartbeat to Namenode with __Storage Report__ which contains usage and capcity details.
+* __Block Report__ are split into two types: _Incremental block report_ sends periodically the list newly received and deleted blocks. And _Full block report_ sent less frequently with complete list of all block replicas.
+*With new architecture Block report is send by every datanode and thus we can scale.
+
 ### HDFS commands
 
 Commands | Description
@@ -106,3 +110,10 @@ _hdfs dfsadmin -safemode enter_ | Enter safemode
 _hdfs dfsadmin -saveNamespace_ | Saves new checkpoint while NameNode process keeps running
 _hdfs dfsadmin -rollEdits_ | manually rolls edits
 _hdfs dfsadmin -fetchimage_ | download latest fsimage from NN, useful for backup
+
+###NameNode High Avilbility
+* Two NameNode is present with Active and Hot Standby Node.
+![Image of HA namenode](http://hortonworks.com/wp-content/uploads/2013/10/namenodeha.png)
+* There are two ZKFC processes – one on each NameNode machine. ZKFC uses the Zookeeper Service for coordination in determining which is the Active NameNode and in determining when to failover to the Standby NameNode.
+* Quorum journal manager(QJM) in NameNode writes file system journal logs to the journal nodes.
+
