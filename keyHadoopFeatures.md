@@ -111,7 +111,7 @@ _hdfs dfsadmin -saveNamespace_ | Saves new checkpoint while NameNode process kee
 _hdfs dfsadmin -rollEdits_ | manually rolls edits
 _hdfs dfsadmin -fetchimage_ | download latest fsimage from NN, useful for backup
 
-###NameNode High Avilbility
+###NameNode High Availability
 * Two NameNode is present with Active and Hot Standby Node.
 ![Image of HA namenode](http://hortonworks.com/wp-content/uploads/2013/10/namenodeha.png)
 * There are two ZKFC processes – one on each NameNode machine. ZKFC uses the Zookeeper Service for coordination in determining which is the Active NameNode and in determining when to failover to the Standby NameNode.
