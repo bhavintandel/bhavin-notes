@@ -60,6 +60,8 @@
 echo never > /sys/kernel/mm/redhat_transparent_hugepage/enabled
 fi`
 
+11. `yum -y upgrade openssl`
+
 
 ###Installation
 
