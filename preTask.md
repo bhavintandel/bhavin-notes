@@ -13,7 +13,9 @@
 ### Task 3: Understand SSH, SCP and RSync
 
   * __SSH__ stands for secure shell which encrypt message while sending over network which was not provided by Telnet.
-  * Following image will give good understanding of both cases.![Img of telnet](http://support.suso.com/w/images/5/52/Telnet-Client-server-unencrypted.png), ![Img of ssh](http://support.suso.com/w/images/6/68/SSH-client-server-encrypted.png)
+  * Following image will give good understanding of both cases.
+![Img of telnet](http://support.suso.com/w/images/5/52/Telnet-Client-server-unencrypted.png)
+![Img of ssh](http://support.suso.com/w/images/6/68/SSH-client-server-encrypted.png)
   * [_This_](http://support.suso.com/supki/SSH_Tutorial_for_Linux) is an awesome link to understand SSH.
 
   * __SCP__ means secure copy. 
