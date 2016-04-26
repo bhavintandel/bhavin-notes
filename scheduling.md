@@ -29,3 +29,11 @@
   <value>org.apache.hadoop.yarn.server.resourcemanager.scheduler.fair.FairScheduler</value>
 </property>
 ```
+
+
+### Capacity Scheduler
+
+  * It reserves the queue for small jobs and so cluster is not fully utilized.
+  * __Queue Elasticity__ is behaviour which means that it can allocate available resources to waiting jobs even if it causes queue's capacity to be exceeded.
+
+![Image of Scheduling](https://www.safaribooksonline.com/library/view/hadoop-the-definitive/9781491901687/images/hddg_0403.png)
