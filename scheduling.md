@@ -18,8 +18,8 @@
   * Split each pool's min share among its jobs
   * Split each pool's total share among its jobs
   * When slot need to be assign:
-    __If__ job is below min share, schedule it
-    __Else__ schedule the job that we have been most unfair to
+    * __If__ job is below min share, schedule it
+    * __Else__ schedule the job that we have been most unfair to
 
  #### Installation of Fair Scheduler
   * Assign the appropriate scheduler class in __yarn-site.xml__:
@@ -28,5 +28,4 @@
   <name>yarn.resourcemanager.scheduler.class</name>
   <value>org.apache.hadoop.yarn.server.resourcemanager.scheduler.fair.FairScheduler</value>
 </property>
-```
 ```
