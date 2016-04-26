@@ -23,3 +23,4 @@
   #### Loading data into hive
   * Login into hive: `sudo -u hdfs hive`
   * Create database and table. [Here](http://www.tech-ab.net/bigdata/hadoop/hortonworks-data-platform-centos-7-part-8-import-data-hdfs-create-hive-table-load-hive-table/) is great link which explains in short. Also [This](https://www.youtube.com/watch?v=tR8_ItrB1Tc) video is very explanatory 
+
