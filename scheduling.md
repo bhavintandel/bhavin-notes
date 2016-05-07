@@ -1,13 +1,13 @@
 ### [Fair Scheduler](https://www.safaribooksonline.com/library/view/hadoop-the-definitive/9781491901687/ch04.html)
  
- #### Basics
+#### Basics
   * Decision is based only on memory but it is possible to with considering both CPU & memory
   * Groups jobs into _"pools"_
   * Assign each pool a gauranteed minimum shares
   * Divide excess capacity evenly between pools
   * By default __CDH__ has fair scheduler.
 
- #### Pools
+#### Pools
   * Determined from a configurable job property
     * Default in 0.20: username(one pool per user)
   * Pool properties:
@@ -15,7 +15,7 @@
     * Minimum Reducer
     * Limit on number of running jobs
 
- #### Scheduling Algorithm
+#### Scheduling Algorithm
   * Split each pool's min share among its jobs
   * Split each pool's total share among its jobs
   * When slot need to be assign:
@@ -23,7 +23,7 @@
     * __Else__ schedule the job that we have been most unfair to
   * ![Image of fair scheduler](https://www.safaribooksonline.com/library/view/hadoop-the-definitive/9781491901687/images/hddg_0404.png)
 
- #### Installation of Fair Scheduler
+#### Installation of Fair Scheduler
   * Assign the appropriate scheduler class in _yarn-site.xml_:
 ```xml
 <property>
