@@ -117,3 +117,9 @@ _hdfs dfsadmin -fetchimage_ | download latest fsimage from NN, useful for backup
 * There are two ZKFC processes – one on each NameNode machine. ZKFC uses the Zookeeper Service for coordination in determining which is the Active NameNode and in determining when to failover to the Standby NameNode.
 * Quorum journal manager(QJM) in NameNode writes file system journal logs to the journal nodes.
 
+
+### If not Ambari & Cloudera Manager
+Fact is Ambari or cloudera manager are totally misleading tools on cluster monitoring.
+You can manage existing cluster with Ambari only if you used HDP (Horton works data platform ) to built the cluster.
+If you built the cluster manually by installing and configured hadoop on linux disto then ambari is no useful to you.
+Use __Ganglia__ web to monitor your cluster. If you can integrate nagois base with ganglia the you will also receive alerts if any of your node goes down.
