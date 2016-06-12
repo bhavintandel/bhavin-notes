@@ -130,7 +130,10 @@ use ambari;
 source /var/lib/ambari-server/resources/Ambari-DDL-MySQL-CREATE.sql;
 ```
 
-7. Start ambari server
+7. ambari-agent.ini modify
+  * `sudo sed -i.old s/hostname=localhost/hostname=bmaster1.cloudwick.com/ /etc/ambari-agent/conf/ambari-agent.ini`
+
+8. Start ambari server
   * `sudo service ambari-server start`
 
 
