@@ -12,13 +12,13 @@
     * Decide whether to enter interactive startup.
     * Kills and starts run-level scripts.
   * A software that has service to start at start time can add script to __/etc/init.d__ directory.
-  0 — Halt
-  1 — Single-user text mode
-  2 — Not used (user-definable)
-  3 — Full multi-user text mode
-  4 — Not used (user-definable)
-  5 — Full multi-user graphical mode (with an X-based login screen)
-  6 — Reboot
+  0 â€” Halt
+  1 â€” Single-user text mode
+  2 â€” Not used (user-definable)
+  3 â€” Full multi-user text mode
+  4 â€” Not used (user-definable)
+  5 â€” Full multi-user graphical mode (with an X-based login screen)
+  6 â€” Reboot
   * `runlevel` to check current runlevel.
   * `telinit 5` to change run level to 5.
   * `chkconfig ntpd on` to start ntpd at current runlevel.
