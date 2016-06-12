@@ -53,7 +53,7 @@
   * It is important to tune few parameter of memory to optimize hadoop. [Here](http://mapredit.blogspot.co.uk/2014/11/hadoop-server-performance-tuning.html) is the wonerful link.
     * To disable swappiness:
     ` sysctl -w vm.swappiness=0`
-    `echo “vm.swappiness = 0” >> /etc/sysctl.conf `
+    `echo â€œvm.swappiness = 0â€ >> /etc/sysctl.conf `
   * Disable Huge Tansparent Pages:
     `echo never > /sys/kernel/mm/transparent_hugepage/enabled`
     `if test -f /sys/kernel/mm/redhat_transparent_hugepage/enabled; then
