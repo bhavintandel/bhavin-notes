@@ -14,7 +14,7 @@ The Client, lives within this realm, as well as the service or host you want to 
 When requesting access to a service or host, three interactions take place between you and:
   * the Authentication Server
   * the Ticket Granting Server
-  * the Service or host machine that you’re wanting access to. 
+  * the Service or host machine that youâ€™re wanting access to. 
 
 At each interaction, two message will be recieved, one can be decrypted and one cannot.
 Services we are requesting never communicate KDC. 
