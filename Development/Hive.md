@@ -1,3 +1,5 @@
+# Hive Intro
+
 ## Overview 
 
   * Data warehousing application in hadoop.
@@ -35,4 +37,135 @@
     Metastore service runs with main HiveServer process and Metastore database run as seperate process or on separate host.
   3. Remote Mode (Recommended)
     Metastore service runs in its own JVM, other processes communicates via Thrift network API. Metastore service communicate with database over JDBC. 
+
+
+# Hive (Relational Data Analytics)
+
+## Hive Tables
+
+  * Each table maps to single directory which is stored as text (by default) and sub-directories are not allowed.
+  * It uses metastore t give context to the data.
+  * It supports multiple database.
+
+## Exploring commands
+
+  1. SHOW DATABASES;
+  2. USE <database_name>;
+  3. SHOW TABLES;
+  4. SHOW TABLES IN <database_name>;
+  5. DESCRIBE <database_name>;
+  6. DESCRIBE FORMATTED <database_name>;
+
+## HiveQL Basics
+
+  * It is case-insensitive and terminated by semicolon(;).
+  * Comment begins with -- (double hyphen) with no multi-line comments.
+
+```sh
+$ cat myScript.hql
+
+SELECT id, name, addr
+  FROM students
+  WHERE marks>70; -- distinction
+```
+
+  * LIMIT, sets maximum number of rows returned. -- _Caution:_ no guarantee regarding which 10 results are returned.
+    * Use ORDER BY for top-N queries.
+
+    ```sql
+    hive> SELECT id, fname,lname FROM students
+          ORDER BY id DESC LIMIT 10;
+    ```
+  * Using WHERE & AND
+
+  ```sql
+  hive> SELECT * FROM customers WHERE fname LIKE
+  'DI%' AND (city='Seattle' OR city='Portland');
+  ```
+
+  * Table Aliases can be used to simplify the work, we cannot use __AS__ to specify table aliases 
+  
+  ```sql
+  hive> SELECT o.order_date, c.fname, f.addr
+        FROM customers c JOIN orders o
+	ON c.cust_id = o.cust_id
+	WHERE c.zipcode='94306';
+  ```
+
+  * UNION ALL can be used to print concatenated output but each query must match
+
+  ```sql
+  hive> SELECT id, name, lname
+         FROM employees
+	 WHERE state='CA' AND salary > 75000
+	UNION ALL
+	SELECT id, name, lname
+	 FROM employees
+	 WHERE state='MA' AND salary > 85000
+  ```
+
+  * It supports Subqueries only in FROM clause:
+
+  ```sql
+  hive> SELECT prod_id, brand, name
+        FROM (SELECT * 
+	      FROM products
+	      WHERE price > 500
+	      ORDER BY price DESC
+	      LIMIT 10) high_profits
+	WHERE price > 1000
+	ORDER BY brand, name;
+  ```
+
+
+## Hive Datatypes
+  
+  * Integer
+    1. TINYINT
+    2. SMALLINT
+    3. INT
+    4. BIGINT
+  
+  * Decimal
+    1. FLOAT
+    2. DECIMAL
+
+  * STRING
+  * BOOLEAN
+  * TIMESTAMP
+  * BINARY
+  * COMPLEX
+    1. ARRAY
+    2. MAP
+    3. STRUCT
+
+## Joins in Hive
+  1. Inner Joins
+  2. Outer Joins (left, right and full)
+  3. Cross Joins
+  4. Left semi joins
+ 
+  * Only equality conditions are allowed : customers.cus_id = orders.cus_id
+  * For best performance, _list larger table at end_
+
+  ```sql
+  hive> SELECT c.cus_id, name, total
+        FROM customers c
+	JOIN orders o 
+	ON (c.cus_id = o.cus_id); 
+  ```
+  * Hive doesn't support IN/EXISTS subqueries.
+
+
+## Hive BuiltIn Functions
+
+  * Function names are not case sensitive. 
+  ```sql
+  hive> SELECT CONCAT(fname, ' ', lname) AS fullname
+        FROM customer;
+  ```
+  * To see type, `DESCRIBE FUNCTION <func_name>;`
+
+
+
 
