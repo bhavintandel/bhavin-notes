@@ -41,6 +41,16 @@ Each priority is implemented as seperate FIFO queue. So it can be seen that it i
 
 #### Fair Scheduler
 
+First minimum share is allocated and then available resoources are distributed fairly among other jobs. Also there is a concept of _weight_, a pool with higher weight recieves more resources.
+Effect of pool weight is not apparent until the total demand with greater than total capacity. Job priorities is implemented using weight.
+
+Important points:
+  * Minimum share before fair share.
+  * Pool never recieves more than its demand, also if they have min share.
+  * During fair share, fill the glasses evenly.
+  * Pools can have weights.
+
+If multiple jobs are submitted in a same pool, Fair Scheduler uses another instance of itself to scheduler jobs within the pool.
 <property>
  <name>yarn.resourcemanager.scheduler.class</name>
  <value>org.apache.hadoop.yarn.server.resourcemanager.scheduler.capacity.CapacityScheduler</value>
