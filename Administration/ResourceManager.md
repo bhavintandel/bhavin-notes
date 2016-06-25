@@ -50,7 +50,22 @@ Important points:
   * During fair share, fill the glasses evenly.
   * Pools can have weights.
 
-If multiple jobs are submitted in a same pool, Fair Scheduler uses another instance of itself to scheduler jobs within the pool.
+If multiple jobs are submitted in a same pool, Fair Scheduler uses another instance of itself to scheduler jobs within the pool. We can implement FIFO within a pool. If pool's min share is given to other pools for cluster utilization and a new job is submitted to the min share pool then Fair scheduler preempt the tasks and steal the slots back to fulfill starved pool min share.
+
+There are two kind of preemptions:
+  1. Minimum Share (preeemption is harsh)
+  2. Fair Share 
+
+Also it has _delayed task assignment_ concept which let one slot of task tracker to be left empty for data locality in future.
+
+##### To configure Fair Scheduler
+Two parts need to be set:
+  1. _mapred-site.xml_
+  2. Separate file for pool configuration
+
+It also has property called _sizebasedweight_ which adjust the weight of the pool according to the demand.
+Also it can accept multiple jobs in single heartbeat
+
 <property>
  <name>yarn.resourcemanager.scheduler.class</name>
  <value>org.apache.hadoop.yarn.server.resourcemanager.scheduler.capacity.CapacityScheduler</value>
