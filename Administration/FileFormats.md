@@ -6,6 +6,8 @@ It can be:
   2. Record Compressed
   3. Block Compressed
 
+It allows splitting even when the data is compressed.
+
 # Avro
 
 Avro is an Apache™ open source project that provides data serialization and data exchange services for Hadoop®. 
@@ -16,7 +18,7 @@ Some data exchange services use a code generator to interpret the data definitio
 Avro supports a rich set of primitive data types including: numeric, binary data and strings; and a number of complex types including arrays, maps, enumerations and records.
 A sort order can also be defined for the data.
 Data stored using Avro can easily be passed from a program written in one language to a program written in another language, even from a complied language like C to a scripting language like Pig
-
+Support block compression and are splittable.
 [Video of Avro](https://youtu.be/3BOkW1iVQOQ)
 
 
@@ -26,3 +28,8 @@ Using Parquet at Twitter, we experienced a reduction in size by one third on our
 There are several advantages to columnar formats.
 Organizing by column allows for better compression, as data is more homogenous. The space savings are very noticeable at the scale of a Hadoop cluster.
 I/O will be reduced as we can efficiently scan only a subset of the columns while reading the data. Better compression also reduces the bandwidth required to read the input.
+
+# ORC (Optimized Row Columnar)
+
+![ORC storage](http://www.semantikoz.com/blog/wp-content/uploads/2014/02/Orc-File-Layout.png)
+ORC stores collections of rows in one file and within the collection the row data is stored in a columnar format. This allows parallel processing of row collections across a cluster. Each file with the columnar layout is optimised for compression and skipping of data/columns to reduce read and decompression load.
