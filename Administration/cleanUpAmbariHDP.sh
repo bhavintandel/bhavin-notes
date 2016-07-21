@@ -60,7 +60,6 @@ yum -y remove fping.x86_64
 yum -y remove perl-rrdtool.x86_64
 yum -y remove webhcat-tar-pig.noarch
 yum -y remove webhcat-tar-hive.noarch
-yum –y remove mysql mysql-server
 yum –y remove bigtop-jsvc.x86_64
 yum –y remove snappy.x86_64
 yum –y remove snappy-devel.x86_64
