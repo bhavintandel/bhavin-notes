@@ -36,13 +36,9 @@
 8. Install Java
   * Following is link to install java 1.8 [here](http://tecadmin.net/install-java-8-on-centos-rhel-and-fedora/#)
   * `cd opt`
-  * `wget --no-check-certificate \
-     --no-cookies \
-     --header "Cookie: oraclelicense=accept-securebackup-cookie" \
-     http://download.oracle.com/otn-pub/java/jdk/7u79-b15/jdk-7u79-linux-x64.rpm \
-     -O jdk-7u79-linux-x64.rpm`
-  * `rpm -ivh jdk-7u79-linux-x64.rpm`
-  * `alternatives --install /usr/bin/java java /usr/java/jdk1.7.0_79/bin/java 200000`
+  * `wget --no-check-certificate --no-cookies --header "Cookie: oraclelicense=accept-securebackup-cookie" http://download.oracle.com/otn-pub/java/jdk/8u101-b13/jdk-8u101-linux-x64.rpm -O jdk-8u101-linux-x64.rpm`
+  * `rpm -ivh jdk-8u101-linux-x64.rpm`
+  * `alternatives --install /usr/bin/java java /usr/java/jdk1.8.0_101/bin/java 200000`
 
 9. Install MySql
   * `yum install mysql-server`
