@@ -162,3 +162,9 @@ OR
 
 * On all datanode
   1. `/etc/ambari-agent/conf/ambari-agent.ini` and change HostName to ambari-server hostname.
+
+* To Delete Postgresql database
+  1. `su -u postgres`
+  2. `psql`
+  3. `drop database ambari`
+  
