@@ -1,5 +1,5 @@
 ##  Operational Best Practices - Partner Solution Engineer Sean Roberts @seano 
-  ### Plan - Cluster Design
+### Plan - Cluster Design
   
   1. More is better than bigger when it comes to nodes
 
@@ -34,7 +34,7 @@
    __Carving out master nodes on small cluster is not required. We can use master as datanode__
 
   
-  ### Plan - Hardware Selection
+### Plan - Hardware Selection
   
   1. Sizing (Worker Node):
     * CPU: 8-12 cores each
@@ -75,7 +75,7 @@
     * Switches dedicated to cluter only!
 
 
-  ### Provision & Deploy
+### Provision & Deploy
 
   1. Automate!
     * Cluster extends to 100s or 1000s of nodes.
@@ -117,14 +117,14 @@
     * Document how to use it.
 
   
-  ### Cluster Validation
+### Cluster Validation
   * Ambari Smoke Tests are run automatically.
   * terasort
   * DFSIO
   * HiBench
   * If using cloud check them (g3, s3, swift)
 
-  ### Tuning: Namenode
+### Tuning: Namenode
   * Heap size needs to be tuned as cluter grows:
     * thumb rule: 200 bytes per object 
       * another thumb rule: 1.3GB per 1PB of data
@@ -138,7 +138,7 @@
 
   * **Log**: 
 
-  ### Backup & HA
+### Backup & HA
   * Namenode:
      * Can add additional metadata mounts (dfs.namenode.data.dir) 
 
@@ -147,18 +147,18 @@
      * Use Snapshots
      * Replicate using Falcon, distcp
 
-  ### Adding new node
+### Adding new node
   * Add them in groups
   * Rebalance after adding
 
 
-  ### Secure
+### Secure
   * Kerberise the cluster as it is integrated with ambari.
   * Integrate with AD.
   * Add Knox for perimeter security. 
 
 
-  ### Tenant onboarding
+### Tenant onboarding
   * Bringing new project, user, group to cluster.
 
  [Here is the link to presentation](https://github.com/seanorama/workshop-hadoop-ops) 
