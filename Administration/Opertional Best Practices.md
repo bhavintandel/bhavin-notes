@@ -1,8 +1,4 @@
-# Cheat Sheet and Tips for a Custom Install of Hortonworks Data Platform like a Pro
-
-## Step 1: Do Your Research..... Plan, Plan, Plan, Do it Right the First time, or Risk Doing it Over, and Over Again
-
-  ### * Operational Best Practices - Partner Solution Engineer Sean Roberts @seano 
+##  Operational Best Practices - Partner Solution Engineer Sean Roberts @seano 
 
   #### Plan - Cluster Design
 
